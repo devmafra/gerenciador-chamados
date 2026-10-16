@@ -1,0 +1,25 @@
+GET http://localhost:5051
+###
+GET http://localhost:5051/status
+###
+GET http://localhost:5051/saudacao/Adrielli
+###
+GET http://localhost:5051/chamados
+###
+
+POST http://localhost:5051/chamados
+Content-Type: application/json
+
+{
+  "titulo":""
+}
+###
+GET http://localhost:5051/chamados/1
+###
+PATCH http://localhost:5051/chamados/1/status
+Content-Type: application/json
+
+{
+  "status": 1
+}
+###
