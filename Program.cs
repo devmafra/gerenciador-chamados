@@ -1,14 +1,16 @@
 // Variaveis globais
 using GerenciadorChamados.Api.Data;
+using Microsoft.EntityFrameworkCore;
 
 const string GetChamadosEndpointName = "GetChamados";
 
 // Inicializa configurações e serviços
 var builder = WebApplication.CreateBuilder(args);
 
-// Variable of connection
-var connString = "Data Source=ChamadosDb.db";
-builder.Services.AddSqlite<ChamadoDbContext>(connString);
+// Criação do DbContext
+string connString = "Data Source=ChamadosDb.db";
+
+builder.Services.AddDbContext<ChamadoDbContext>(options => options.UseSqlite(connString));
 
 // Constrói o objeto WebApplication
 var app = builder.Build();
@@ -28,7 +30,15 @@ app.MapGet("/status", () => status);
 
 app.MapGet("/saudacao/{nome}", (string nome) => $"Olá, {nome}!");
 
-app.MapGet("/chamados", () => listaChamados);
+// app.MapGet("/chamados", () => listaChamados);
+// Novo GET Chamados
+app.MapGet(
+    "/chamados",
+    (ChamadoDbContext db) =>
+    {
+        return db.Chamados.ToListAsync();
+    }
+);
 
 app.MapGet(
         "/chamados/{id}",
