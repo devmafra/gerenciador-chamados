@@ -11,15 +11,21 @@ POST http://localhost:5051/chamados
 Content-Type: application/json
 
 {
-  "titulo":"Pc não da boot"
+  "titulo":"Impressora com defeito"
 }
 ###
-GET http://localhost:5051/chamados/2
+GET http://localhost:5051/chamados/20
 ###
-PATCH http://localhost:5051/chamados/2/status
+PATCH http://localhost:5051/chamados/1/status
 Content-Type: application/json
 
 {
-  "status": 1
+  "status": 3
 }
+###
+GET http://localhost:5051/chamados
+###
+GET http://localhost:5051/chamados2
+###
+GET http://localhost:5051/status
 ###
