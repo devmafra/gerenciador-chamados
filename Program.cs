@@ -43,21 +43,6 @@ app.MapGet(
     }
 );
 
-// app.MapGet(
-//         "/chamados/{id}",
-//         async (int id, ChamadoDbContext db) =>
-//         {
-//             Chamado? result = await db
-//                 .Chamados.Include(c => c.Status)
-//                 .FirstOrDefaultAsync(c => c.Id == id);
-
-//             if (result != null)
-//                 return Results.Ok(result);
-//             else
-//                 return Results.NotFound();
-//         }
-//     )
-//     .WithName(GetChamadosEndpointName);
 app.MapGet(
         "/chamados/{id}",
         async (int id, ChamadoDbContext db) =>
