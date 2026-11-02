@@ -16,8 +16,23 @@ string connString = "Data Source=ChamadosDb.db";
 
 builder.Services.AddDbContext<ChamadoDbContext>(options => options.UseSqlite(connString));
 
+// Configuração CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        "AngularLocal",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+        }
+    );
+});
+
 // Constrói o objeto WebApplication
 var app = builder.Build();
+
+// Habilitar políticas CORS
+app.UseCors("AngularLocal");
 
 // Registra o endpoint e seu handler
 app.MapGet("/", () => "Hello Ticket Manager App!");
