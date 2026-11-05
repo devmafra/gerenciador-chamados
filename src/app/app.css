@@ -1,0 +1,69 @@
+.button {
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 8px 4px;
+  padding: 15px;
+  background: #053c9c;
+  transition: all 0.15s ease-in-out;
+  gap: 6px;
+  border-radius: 15px;
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+input {
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+.bigNumber {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 100%;
+  font-size: x-large;
+  margin-top: 5px;
+}
+.bigNumber-container {
+  background: #000;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-around;
+  text-align: center;
+}
+.filters-container {
+  flex-direction: row;
+  justify-content: space-around;
+  display: flex;
+  margin: 8px 4px;
+  transition: all 0.15s ease-in-out;
+  gap: 6px;
+  border-radius: 15px;
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.error {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 8px 4px;
+  padding: 5px;
+  background: #e40808;
+  transition: all 0.15s ease-in-out;
+  border-radius: 15px;
+  text-align: center;
+}

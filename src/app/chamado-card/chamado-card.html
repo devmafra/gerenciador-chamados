@@ -1,0 +1,22 @@
+<div class="box">
+  <div class="header">
+    <h3>Chamado #{{ id() }}</h3>
+    <p style="font-size: small">{{ status() }}</p>
+  </div>
+  <p style="font-weight: 600">{{ titulo() }}</p>
+  <p style="font-size: smaller">Gerenciador de Chamados</p>
+  <hr />
+  <button
+    class="button"
+    [disabled]="status() === 'Concluido' || salvando() || sincronizacaoPendente()"
+    (click)="onClick()"
+  >
+    @if (salvando()) {
+      Salvando...
+    } @else if (sincronizando()) {
+      Sincronizando...
+    } @else {
+      Alterar Status
+    }
+  </button>
+</div>
