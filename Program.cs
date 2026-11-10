@@ -79,6 +79,8 @@ app.MapPost(
     "/chamados",
     async (NovoChamado novoChamado, ChamadoDbContext db) =>
     {
+        await Task.Delay(3000);
+
         string? titulo = novoChamado.Titulo;
 
         if (string.IsNullOrWhiteSpace(titulo))
@@ -116,6 +118,8 @@ app.MapPatch(
     "/chamados/{id}/status",
     async (int id, AlterarStatusRequest request, ChamadoDbContext db) =>
     {
+        // await Task.Delay(3000);
+
         Chamado? chamado = await db.Chamados.FirstOrDefaultAsync(c => c.Id == id);
 
         if (chamado is null)

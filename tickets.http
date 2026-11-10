@@ -20,7 +20,7 @@ PATCH http://localhost:5051/chamados/1/status
 Content-Type: application/json
 
 {
-  "status": 3
+  "status": 2
 }
 ###
 GET http://localhost:5051/chamados
