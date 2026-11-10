@@ -1,1 +1,18 @@
-<p>chamado-form works!</p>
+<div class="container">
+  <p>Insira o titulo do chamado:</p>
+  <input id="title" type="text" [disabled]="criando()" [(ngModel)]="tituloNovoChamado" />
+  <button
+    class="button"
+    (click)="onCriarChamado()"
+    [disabled]="criando() || !tituloNovoChamado.trim()"
+  >
+    @if (criando()) {
+      Criando chamado...
+    } @else {
+      Criar chamado
+    }
+  </button>
+  @if (erroCriacao()) {
+    <p class="error">{{ erroCriacao() }}</p>
+  }
+</div>

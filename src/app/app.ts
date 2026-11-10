@@ -2,12 +2,12 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ChamadoCard } from './chamado-card/chamado-card';
 import { Chamados } from './services/chamados';
-import { NovoChamado } from './models/novo-chamado';
+import { ChamadoForm } from './chamado-form/chamado-form';
 import { FormsModule } from '@angular/forms';
 import { FiltroStatus } from './models/filtro-status';
 
 @Component({
-  imports: [RouterOutlet, ChamadoCard, FormsModule],
+  imports: [RouterOutlet, ChamadoCard, FormsModule, ChamadoForm],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',
@@ -19,19 +19,13 @@ export class App implements OnInit {
   protected readonly chamados = this.chamadosService.lista;
 
   protected readonly carregando = this.chamadosService.carregandoStatus;
-
-  protected readonly salvando = this.chamadosService.salvandoStatus;
-
   protected readonly mensagemErro = this.chamadosService.mensagemErro;
 
+  protected readonly salvando = this.chamadosService.salvandoStatus;
   protected readonly mensagemErroSalvamento = this.chamadosService.mensagemErroSalvamento;
 
   protected readonly sincronizacaoPendente = this.chamadosService.sincronizacaoPendenteStatus;
   protected readonly sincronizando = this.chamadosService.sincronizandoStatus;
-
-  protected criando = this.chamadosService.criandoStatus;
-
-  protected tituloNovoChamado = '';
 
   protected readonly totalChamados = computed(() => this.chamados().length);
 
@@ -66,25 +60,5 @@ export class App implements OnInit {
 
   ngOnInit(): void {
     this.chamadosService.carregarDaApi();
-  }
-
-  protected readonly erroCriacao = signal<string | null>(null);
-
-  onCriarChamado(): void {
-    const tituloNovoChamado: NovoChamado = {
-      titulo: this.tituloNovoChamado.trim(),
-    };
-
-    if (!tituloNovoChamado.titulo) return;
-
-    this.erroCriacao.set(null);
-
-    this.chamadosService.criarChamado(tituloNovoChamado).subscribe({
-      next: () => (this.tituloNovoChamado = ''),
-      error: (err) => {
-        console.error('Erro ao criar o chamado:', err);
-        this.erroCriacao.set('Não foi possível criar o chamado!');
-      },
-    });
   }
 }

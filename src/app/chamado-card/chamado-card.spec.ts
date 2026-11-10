@@ -11,6 +11,13 @@ describe('ChamadoCard', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChamadoCard);
+    fixture.componentRef.setInput('id', 1);
+    fixture.componentRef.setInput('status', 'Aberto');
+    fixture.componentRef.setInput('titulo', 'Chamado de teste');
+    fixture.componentRef.setInput('salvando', false);
+    fixture.componentRef.setInput('sincronizando', false);
+    fixture.componentRef.setInput('sincronizacaoPendente', false);
+    fixture.detectChanges();
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
