@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/GerenciadorChamados.Console/">
+    <Project Path="GerenciadorChamados.Console/gerenciador-chamado.csproj" />
+  </Folder>
+  <Project Path="GerenciadorChamados.Api/GerenciadorChamados.Api.csproj" />
+</Solution>

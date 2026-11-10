@@ -1,0 +1,54 @@
+# .NET build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Aa]rtifacts/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Visual Studio / IDE user state
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.idea/
+.vscode/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Angular / Node.js generated files
+**/node_modules/
+**/dist/
+**/.angular/
+**/coverage/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+**/secrets.json
+
+# Local SQLite databases and journal files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-shm
+*.sqlite-wal
+
+# Logs and operating-system files
+*.log
+Thumbs.db
+.DS_Store
