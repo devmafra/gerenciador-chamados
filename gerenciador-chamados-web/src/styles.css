@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  max-width: 500px;
+  margin: auto;
+}
+.button {
+  padding: 5px 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.error {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 8px 4px;
+  padding: 5px;
+  background: #e40808;
+  transition: all 0.15s ease-in-out;
+  border-radius: 15px;
+  text-align: center;
+}

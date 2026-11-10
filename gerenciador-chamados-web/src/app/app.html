@@ -1,0 +1,90 @@
+@if (!carregando() && !mensagemErro()) {
+  <div class="container bigNumber-container">
+    <div>
+      <p>Total de chamados</p>
+      <p class="bigNumber">{{ totalChamados() }}</p>
+    </div>
+    <div>
+      <p>Chamados abertos</p>
+      <p class="bigNumber">{{ chamadosAbertos() }}</p>
+    </div>
+  </div>
+}
+<app-chamado-form />
+@if (carregando()) {
+  <p>Carregando chamados...</p>
+} @else if (mensagemErro()) {
+  <p class="error">{{ mensagemErro() }}</p>
+} @else {
+  @if (mensagemErroSalvamento()) {
+    <p class="error">{{ mensagemErroSalvamento() }}</p>
+  }
+  @if (sincronizacaoPendente()) {
+    <button (click)="tentarSincronizarNovamente()" [disabled]="sincronizando()">
+      @if (sincronizando()) {
+        Sincronizando...
+      } @else {
+        Tentar sincronizar novamente
+      }
+    </button>
+  }
+  <div class="container">
+    <p>Filtrar chamados por status:</p>
+    <div class="filters-container">
+      <button
+        class="button"
+        [disabled]="filtroStatus() === 'Todos'"
+        (click)="onAlterarFiltro('Todos')"
+      >
+        Todos
+      </button>
+      <button
+        class="button"
+        [disabled]="filtroStatus() === 'Aberto'"
+        (click)="onAlterarFiltro('Aberto')"
+      >
+        Aberto
+      </button>
+      <button
+        class="button"
+        [disabled]="filtroStatus() === 'EmAndamento'"
+        (click)="onAlterarFiltro('EmAndamento')"
+      >
+        Em Andamento
+      </button>
+      <button
+        class="button"
+        [disabled]="filtroStatus() === 'Concluido'"
+        (click)="onAlterarFiltro('Concluido')"
+      >
+        Concluido
+      </button>
+    </div>
+    <input
+      type="text"
+      name="busca"
+      id="busca"
+      placeholder="Buscar chamado pelo titulo..."
+      [(ngModel)]="buscaTitulo"
+    />
+  </div>
+  @for (chamado of chamadosFiltrados(); track chamado.id) {
+    <app-chamado-card
+      [id]="chamado.id"
+      [titulo]="chamado.titulo"
+      [status]="chamado.status"
+      [salvando]="salvando()"
+      [sincronizando]="sincronizando()"
+      [sincronizacaoPendente]="sincronizacaoPendente()"
+      (alterarStatus)="onAlterarStatus($event)"
+    />
+  } @empty {
+    @if (totalChamados() === 0) {
+      <p>Nenhum chamado cadastrado.</p>
+    } @else {
+      <p>Nenhum chamado encontrado para este filtro.</p>
+    }
+  }
+}
+
+<router-outlet />
